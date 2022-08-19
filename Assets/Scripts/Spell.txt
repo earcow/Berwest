@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Spell : MonoBehaviour
+{
+    [Header("Общая информация")]
+    [Tooltip("Имя заклинания")]
+    [SerializeField] public string _spellName;
+    public string SpellName {
+        get
+        {
+            return _spellName; 
+        }
+        set
+        {
+            _spellName = value;
+        } 
+    }
+        //=> this._spellName;
+
+    [Tooltip("Иконка заклинания")]
+    [SerializeField] private Sprite _icon;
+    public Sprite icon => this._icon;
+
+    [Tooltip("Описание заклятия")]
+    [SerializeField] private string _description;
+    public string description => this._description;
+
+    [Header("Характеристики заклятия")]
+    [Tooltip("Сложность заклятия (расход маны)")]
+    [SerializeField] private SpellDifficultyEnum _spellDifficulty;
+    public SpellDifficultyEnum spellDifficulty => this._spellDifficulty;
+
+    [Tooltip("Тип заклятия")]
+    [SerializeField] private SpellTypeEnum _spellType;
+    public SpellTypeEnum spellType => this._spellType;
+
+    [Tooltip("Частота")]
+    [SerializeField] private SpellFrequencyEnum _spellFrequency;
+    public SpellFrequencyEnum spellFrequency => this._spellFrequency;
+
+    [Tooltip("Минимальный промежуток между кастами")]
+    [SerializeField] private float _delayBetweenCast;
+    public float delayBetweenCast => this._delayBetweenCast;
+
+    [Tooltip("Продолжительность эффекта, сек.")]
+    [SerializeField] private float _durationOfExposure;
+    public float durationOfExposure => this._durationOfExposure;
+
+    //==========================================================
+    [Header("GUI")]
+    [Tooltip("Перекрестие по-умолчанию")]
+    [SerializeField] private CrosshairData _crosshairDataDefault;
+    public CrosshairData crosshairDataDefault => this._crosshairDataDefault;
+
+    [Tooltip("Перекрестие при наведении на цель")]
+    [SerializeField] private CrosshairData _crosshairDataTargetInSight;
+    public CrosshairData crosshairDataTargetInSight => this._crosshairDataTargetInSight;
+
+    //==========================================================
+    [Header("Форма снарядов и эффекты")]
+    [SerializeField] private GameObject _projectile_prefab;
+    public GameObject projectile_prefab => this._projectile_prefab;
+
+    [SerializeField] private float _projectileSpeed;
+    public float projectileSpeed => this._projectileSpeed;
+
+    [SerializeField] private GameObject _effect_prefab;
+    public GameObject effect_prefab => this._effect_prefab;
+
+    [SerializeField] private GameObject _collisionParticlePrefab;
+    public GameObject collisionParticlePrefab => this._collisionParticlePrefab;
+
+    [Tooltip("Эффект заклятия на конце волшебной палочки")]
+    [SerializeField] private GameObject _spellMuzzle;
+    public GameObject spellMuzzle => this._spellMuzzle;
+
+    public virtual void TargetEffect(GameObject target, float duration)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

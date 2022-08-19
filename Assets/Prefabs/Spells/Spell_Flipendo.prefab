@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7871060980929717516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7871060980929717506}
+  - component: {fileID: 1294057427927053141}
+  m_Layer: 0
+  m_Name: Spell_Flipendo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7871060980929717506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871060980929717516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1294057427927053141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871060980929717516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d827f19e019b0a49add77b432cf6b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description:
+    _name: Flipendo
+    _icon: {fileID: 21300000, guid: cc3415e308217ae448421362229844ea, type: 3}
+    _description: "\u041E\u0442\u0448\u0432\u044B\u0440\u0438\u0432\u0430\u044E\u0449\u0435\u0435
+      \u0437\u0430\u043A\u043B\u044F\u0442\u0438\u0435"
+    _category: 0
+    _cast_difficulty: 0
+    _learn_difficulty: 0
+  physicalProperties:
+    _rechargeDurationBetweenCasts: 0.75
+    _spellEffectDuration: 5
+    "_spell\u0421astingCost": 5
+    _spellHoldingCost: 0
+    _spellEjectionType: 0
+  spellShape:
+    _projectile: {fileID: 0}
+    _mizzle: {fileID: 7655095426451682942, guid: 4d48b487f11e62940a978c7c0c0cbcb4, type: 3}

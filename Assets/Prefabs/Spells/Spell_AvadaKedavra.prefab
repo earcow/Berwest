@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3625087502252696511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3625087502252696497}
+  - component: {fileID: 3625087502252696496}
+  m_Layer: 0
+  m_Name: Spell_AvadaKedavra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3625087502252696497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625087502252696511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3625087502252696496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625087502252696511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a70635959f8bc48a2300736680d74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description:
+    _name: Avada Kedavra
+    _icon: {fileID: 21300000, guid: b652a100934e6bb4ea874a1a60e44566, type: 3}
+    _description: "\u0423\u0431\u0438\u0432\u0430\u044E\u0449\u0435\u0435 \u0437\u0430\u043A\u043B\u044F\u0442\u0438\u0435"
+    _category: 3
+    _cast_difficulty: 3
+    _learn_difficulty: 0
+  physicalProperties:
+    _rechargeDurationBetweenCasts: 2.5
+    _spellEffectDuration: 5
+    "_spell\u0421astingCost": 100
+    _spellHoldingCost: 0
+    _spellEjectionType: 0
+  spellShape:
+    _projectile: {fileID: 0}
+    _mizzle: {fileID: 7655095426451682942, guid: a7d68b1a502e02a49b8efb1b86a8c931, type: 3}

@@ -1,0 +1,52 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SpellGUI : MonoBehaviour
+{
+    public Text _spellName = null;
+    public Image _spellIcon = null;
+    public Image _spellType = null;
+
+    public void SetNewSpell(string spell_name, Sprite spell_icon, SpellTypeEnum spell_type)
+    {
+        this._spellName.text = spell_name;
+        this._spellIcon.sprite = spell_icon;
+
+        switch (spell_type)
+        {
+            case SpellTypeEnum.Charms:
+                this._spellType.color = new Color(0f, 0f, 1f, .5f);
+                break;
+            case SpellTypeEnum.Curse:
+                this._spellType.color = new Color(1f, 0f, 0f, .5f);
+                break;
+
+            case SpellTypeEnum.Hex:
+                this._spellType.color = new Color(0f, 0f, 0f, .5f);
+                break;
+
+            case SpellTypeEnum.Jinx:
+                this._spellType.color = Color.gray;
+                break;
+
+            case SpellTypeEnum.TransfigurationConjuration:
+            case SpellTypeEnum.TransfigurationSwitching:
+            case SpellTypeEnum.TransfigurationTransformation:
+            case SpellTypeEnum.TransfigurationVanishment:
+                this._spellType.color = Color.yellow;
+                break;
+
+            default:
+                this._spellType.color = Color.white;
+                break;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        this._spellName.text = "-";
+        this._spellIcon.sprite = null;
+        this._spellType.color = Color.white;
+    }
+}
