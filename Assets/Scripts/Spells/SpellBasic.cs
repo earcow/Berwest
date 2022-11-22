@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [SerializeField]
 public abstract class SpellBasic : MonoBehaviour
 {
-    
+
     protected void InitializeDescription(string name, Sprite icon, string description, SpellCategory category, SpellDifficulty cast_difficulty, SpellDifficulty learn_difficulty)
     {
         this.description = new SpellDescription(name, icon, description, category, cast_difficulty, learn_difficulty);
@@ -13,6 +15,10 @@ public abstract class SpellBasic : MonoBehaviour
     protected void InitializePhysicalProperties(float rechargeDurationBetweenCasts, float spellEffectDuration, float spellСastingCost, float spellHoldingCost, SpellEjectionType spellEjectionType)
     {
         this.physicalProperties = new SpellPhysicalProperty(rechargeDurationBetweenCasts, spellEffectDuration, spellСastingCost, spellHoldingCost, spellEjectionType);
+    }
+    protected void InitializeProjectileShape(GameObject projectile, GameObject muzzle)
+    {
+        this.spellShape = new SpellShape(projectile, muzzle);
     }
 
     [SerializeField] public SpellDescription description;
@@ -82,16 +88,62 @@ public abstract class SpellBasic : MonoBehaviour
     [System.Serializable]
     public class SpellShape
     {
+        public SpellShape(GameObject projectile, GameObject muzzle)
+        {
+            this._projectile = projectile;
+            this._muzzle = muzzle;
+        }
+
         [Tooltip("Префаб снаряда")] [SerializeField] private GameObject _projectile;
         public GameObject Projectile => this._projectile;
 
-        [Tooltip("Вспышка при касте")] [SerializeField] private GameObject _mizzle;
-        public GameObject Mizzle => this._mizzle;
+        [Tooltip("Вспышка при касте")] [SerializeField] private GameObject _muzzle;
+        public GameObject Muzzle => this._muzzle;
+    }
+
+    public abstract bool TryCastSpell(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket);
+    public abstract bool TryCastSpellAlt(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket);
+
+    protected abstract void InitializeSpell();
+
+    
+    //Проверка возможности колдовать
+    private bool isCanCast = true;
+
+    protected async Task CastRecharge()
+    {
+        isCanCast = false;
+        await Task.Delay(TimeSpan.FromSeconds(physicalProperties.RechargeDuration));
+        isCanCast = true;
+    }
+
+    protected bool IsCanCastSpell()
+    {
+        if (!isCanCast) return false;
+        return true;
     }
 
 
-    protected abstract bool TryCastSpell();
-    protected abstract void InitializeSpell();
+    //Muzzle эффект
+    protected GameObject GetMuzzle(Transform muzzleSocket)
+    {
+        return Instantiate(spellShape.Muzzle, muzzleSocket);
+    }
+    protected void HideMuzzle(ref GameObject muzzle)
+    {
+        DestroyImmediate(muzzle);
+    }
+
+    //Функционал стрельбы
+    private GameObject _projectile;
+    protected void DoShoot(Transform projectileSocket)
+    {
+        var projectileSpeed = 10;
+        _projectile = Instantiate(spellShape.Projectile, projectileSocket.position, projectileSocket.rotation);
+        _projectile.GetComponent<Rigidbody>().AddForce(projectileSocket.forward * projectileSpeed, ForceMode.Force);
+
+        CastRecharge();
+    }
 
     //пересисления для класса
     public enum SpellDifficulty
@@ -127,4 +179,5 @@ public abstract class SpellBasic : MonoBehaviour
         [InspectorName("Луч")] Beam,
         [InspectorName("Уникальный каст")] Unique,
     }
+
 }

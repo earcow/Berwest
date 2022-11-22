@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spell_Flipendo : SpellBasic
 {
+
     protected override void InitializeSpell()
     {
         base.InitializeDescription(
@@ -20,9 +21,25 @@ public class Spell_Flipendo : SpellBasic
             spell—astingCost: 5f,
             spellHoldingCost: 0f,
             spellEjectionType: SpellEjectionType.Shot);
+
+        base.InitializeProjectileShape(
+            projectile: Resources.Load<GameObject>(path: "Prefabs/SpellProjectiles/FlipendoProjectile"),
+            muzzle:     Resources.Load<GameObject>(path: "Prefabs/SpellMuzzles/FlipendoMuzzle"));
     }
 
-    protected override bool TryCastSpell()
+    public override bool TryCastSpell(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
+    {
+        if (!base.IsCanCastSpell()) return false;
+
+        base.HideMuzzle(ref Muzzle);
+        Muzzle = base.GetMuzzle(MuzzleSocket);
+
+        base.DoShoot(ProjectileSocket);
+
+        return true;
+    }
+
+    public override bool TryCastSpellAlt(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
     {
         throw new System.NotImplementedException();
     }

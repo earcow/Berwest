@@ -6,8 +6,18 @@ public class Spell_Lumos : SpellBasic
 {
     protected override void InitializeSpell() {}
 
-    protected override bool TryCastSpell()
+
+    public override bool TryCastSpell(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
     {
-        throw new System.NotImplementedException();
+        base.HideMuzzle(ref Muzzle);
+        Muzzle = base.GetMuzzle(MuzzleSocket);
+
+        return true;
+    }
+
+    public override bool TryCastSpellAlt(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
+    {
+        base.HideMuzzle(ref Muzzle);
+        return true;
     }
 }

@@ -14,6 +14,15 @@ public class Character : MonoBehaviour
     [SerializeField] private List <SpellBasic>_listLearnedSpells;
     public List<SpellBasic> LearnedSpells => _listLearnedSpells;
 
+    [Tooltip("Заклятие на уме")]
+    [SerializeField] private SpellBasic _selectedSpell;
+    public SpellBasic SelectedSpell
+    {
+        get { return _selectedSpell; }
+        set { _selectedSpell = value; }
+    }
+
+
     [Tooltip("Предмет в руках (оружие)")]
     [SerializeField] private GameObject _itemInHand;
     public GameObject ItemInHand

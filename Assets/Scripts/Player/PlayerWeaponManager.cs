@@ -10,7 +10,6 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private Transform _weaponSocket;
 
     private int _indexWeaponSlot = 1;
-    private int _indexSpell = 0;
 
     [Tooltip("Слоты быстрого доступа")]
     public QuickAccessSlot[] QuickAccessPanel =
@@ -29,11 +28,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        _character = GetComponent<Character>();
+        _character = this.GetComponent<Character>();
         _weaponSocket = GetComponentInChildren<TagWeaponSocket>().GetComponent<Transform>();
 
         UpdateDisplayWeapon();
-
     }
 
     private void OnEnable()
@@ -43,20 +41,17 @@ public class PlayerWeaponManager : MonoBehaviour
             inputHandler.OnNextWeaponChanged.AddListener(ChangeNextWeapon);
             inputHandler.OnPreviousWeaponChanged.AddListener(ChangePreviousWeapon);
 
-            inputHandler.OnNextSpellChanged.AddListener(ChangeNextSpell);
-            inputHandler.OnPreviousSpellChanged.AddListener(ChangePreviousSpell);
-
             inputHandler.OnWeaponSelected.AddListener(SelectWeapon);
 
             inputHandler.OnFireCalled.AddListener(DoFire);
             inputHandler.OnAltFireCalled.AddListener(DoAltFire);
 
+            //inputHandler.OnLongFireCalled.AddListener(Blya);
+            //inputHandler.OnLongAltFireCalled.AddListener(Suka);
 
-            inputHandler.OnLongFireCalled.AddListener(Blya);
-            inputHandler.OnLongAltFireCalled.AddListener(Suka);
         }
     }
-
+    /*
     private void Suka()
     {
         Debug.Log("OnLongAltFireCalled");
@@ -66,7 +61,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         Debug.Log("OnLongFireCalled");
     }
-
+    */
     private void OnDisable()
     {
         if (this.TryGetComponent<PlayerInputHandler>(out var inputHandler))
@@ -74,16 +69,12 @@ public class PlayerWeaponManager : MonoBehaviour
             inputHandler.OnNextWeaponChanged.RemoveListener(ChangeNextWeapon);
             inputHandler.OnPreviousWeaponChanged.RemoveListener(ChangePreviousWeapon);
 
-            inputHandler.OnNextSpellChanged.RemoveListener(ChangeNextSpell);
-            inputHandler.OnNextSpellChanged.RemoveListener(ChangePreviousSpell);
-
             inputHandler.OnWeaponSelected.RemoveListener(SelectWeapon);
 
             inputHandler.OnFireCalled.RemoveListener(DoFire);
             inputHandler.OnAltFireCalled.RemoveListener(DoAltFire);
         }
     }
-
 
     private void SelectWeapon(int index)
     {
@@ -122,43 +113,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
         if (QuickAccessPanel[_indexWeaponSlot].Content != null)
             _character.ItemInHand = Instantiate(QuickAccessPanel[_indexWeaponSlot].Content, _weaponSocket);
-
-        if(_character.ItemInHand.TryGetComponent<Wand>(out var wand))
-        {
-            wand.SelectedSpell = _character.LearnedSpells[_indexSpell];
-        }
-    }
-
-
-
-    private void ChangePreviousSpell()
-    {
-        if (_character.ItemInHand != null && _character.ItemInHand.TryGetComponent<Wand>(out var item))
-        {
-            if (_indexSpell - 1 < 0)
-                _indexSpell = _character.LearnedSpells.Count - 1;
-            else
-                _indexSpell--;
-
-            item.SelectedSpell = _character.LearnedSpells[_indexSpell];
-
-            Debug.Log("Selected spell - " + item.SelectedSpell.description.Name);
-        }
-    }
-
-    private void ChangeNextSpell()
-    {
-        if (_character.ItemInHand != null && _character.ItemInHand.TryGetComponent<Wand>(out var item))
-        {
-            if (_indexSpell + 1 > _character.LearnedSpells.Count - 1)
-                _indexSpell = 0;
-            else
-                _indexSpell++;
-
-            item.SelectedSpell = _character.LearnedSpells[_indexSpell];
-
-            Debug.Log("Selected spell - " + item.SelectedSpell.description.Name);
-        }
     }
 
 

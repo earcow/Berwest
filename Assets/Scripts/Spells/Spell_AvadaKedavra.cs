@@ -5,6 +5,7 @@ using UnityEngine;
 [SerializeField]
 public class Spell_AvadaKedavra : SpellBasic
 {
+
     protected override void InitializeSpell()
     {
         base.InitializeDescription(
@@ -23,7 +24,21 @@ public class Spell_AvadaKedavra : SpellBasic
             spellEjectionType: SpellEjectionType.Shot);
     }
 
-    protected override bool TryCastSpell()
+    public override bool TryCastSpell(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
+    {
+        if (!base.IsCanCastSpell()) return false;
+
+        if(Muzzle == base.GetMuzzle(MuzzleSocket)) return false;
+
+        base.HideMuzzle(ref Muzzle);
+        Muzzle = base.GetMuzzle(MuzzleSocket);
+
+        base.DoShoot(ProjectileSocket);
+
+        return true;
+    }
+
+    public override bool TryCastSpellAlt(Transform MuzzleSocket, ref GameObject Muzzle, Transform ProjectileSocket)
     {
         throw new System.NotImplementedException();
     }
