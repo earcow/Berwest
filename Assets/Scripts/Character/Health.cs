@@ -33,12 +33,24 @@ public class Health: MonoBehaviour
         {
             fallDamage.OnFallDamage.AddListener(DecreaseAt);
         }
+
+        OnHealthChanged.AddListener(DeathChecker);
     }
     public void OnDisable()
     {
         if (this.TryGetComponent<FallDamage>(out var fallDamage))
         {
             fallDamage.OnFallDamage.RemoveListener(DecreaseAt);
+        }
+
+        OnHealthChanged.RemoveListener(DeathChecker);
+    }
+
+    public void DeathChecker(float hp)
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject, 1f);
         }
     }
 

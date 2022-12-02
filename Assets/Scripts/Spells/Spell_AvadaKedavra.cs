@@ -33,7 +33,7 @@ public class Spell_AvadaKedavra : SpellBasic
         base.HideMuzzle(ref Muzzle);
         Muzzle = base.GetMuzzle(MuzzleSocket);
 
-        base.DoShoot(ProjectileSocket);
+        base.DoShoot(ProjectileSocket, 10f);
 
         return true;
     }

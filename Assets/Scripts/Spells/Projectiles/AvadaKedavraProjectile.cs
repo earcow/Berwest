@@ -14,33 +14,62 @@ public class AvadaKedavraProjectile : MonoBehaviour
     [SerializeField] private float _fadeIntensityStep = 0.5f;
     [SerializeField] private float _fadeIntensityTimeStep = 0.002f;
 
+    private Rigidbody _projectileRigidbody;
+    private MeshRenderer _projectileRender;
+    private Collider _projectileCollider;
+    private ParticleSystem _projectileMagicSparks;
+    private Light _projectileLight;
+
+    private void OnEnable()
+    {
+        _projectileRigidbody = this.GetComponent<Rigidbody>();
+        _projectileRender = this.GetComponent<MeshRenderer>();
+        _projectileCollider = this.GetComponent<Collider>();
+        _projectileMagicSparks = this.GetComponent<ParticleSystem>();
+        _projectileLight = this.GetComponent<Light>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(FadeLightExplode());
-        this.GetComponent<Rigidbody>().isKinematic = true;
-        this.GetComponent<MeshRenderer>().enabled = false;
-        this.GetComponent<MeshCollider>().enabled = false;
-        this.GetComponent<ParticleSystem>().Stop();
 
+        _projectileRigidbody.isKinematic = true;
+        _projectileRender.enabled = false;
+        _projectileCollider.enabled = false;
+        _projectileMagicSparks.Stop();
+
+         StartCoroutine(FadeLightExplode());
+
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            if (collision.contacts[i].otherCollider.TryGetComponent<Character>(out Character character))
+            {
+                Debug.Log("Попался!");
+                character.GetComponent<Health>().DecreaseAt(gameObject, 1000000);
+            }
+        }
+
+        //Debug.Log(collision.gameObject.GetComponentInChildren<Character>());
+        //Debug.Log(collision.gameObject.GetComponentInParent<Character>());
     }
 
     IEnumerator FadeLightExplode()
     {
-        var light = this.GetComponent<Light>();
-        while (light.intensity < _explodeIntensityLimit)
+        while (_projectileLight.intensity < _explodeIntensityLimit)
         {
-            light.intensity += _explodeIntensityStep;
-            light.range += _explodeRangeStep;
             yield return new WaitForSeconds(_explodeTimeStep);
+            _projectileLight.range += _explodeRangeStep;
+            _projectileLight.intensity += _explodeIntensityStep;
+
+            //Debug.Log("intensity: " + _projectileLight.intensity + "; range: " + _projectileLight.range);
         }
+
         StartCoroutine(FadeLightIntensive());
     }
     IEnumerator FadeLightIntensive()
     {
-        var light = this.GetComponent<Light>();
-        while (light.intensity > 0.0f)
+        while (_projectileLight.intensity > 0.0f)
         {
-            light.intensity -= _fadeIntensityStep;
+            _projectileLight.intensity -= _fadeIntensityStep;
             yield return new WaitForSeconds(_fadeIntensityTimeStep);
         }
     }

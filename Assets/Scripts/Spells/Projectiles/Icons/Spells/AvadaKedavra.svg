@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   sodipodi:docname="AvadaKedavra.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 16 16"
+   height="16"
+   width="16"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="30.490566"
+     inkscape:cx="10.232673"
+     inkscape:cy="6.8217822"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer5" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12414"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect9588"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect2479"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="AvadaKedavra"
+     style="display:inline">
+    <path
+       id="path17254"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.425994;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.566929;stroke-opacity:1"
+       d="M 8.1890736,0.03258782 C 7.8914611,0.26026396 6.7765911,0.50844908 5.9498842,0.70561436 5.876868,1.0072518 5.273696,2.9166681 4.7800625,4.6719144 4.3619002,6.1588027 3.9566033,8.1210559 3.9323049,8.428039 4.3647356,9.0481927 3.8181288,9.4856486 3.8181288,9.4856486 c 0,0 3.0387026,-1.461007 6.5032672,-1.9032239 0,0 -0.3871358,1.8990671 -0.8514555,2.9771853 -0.5555676,1.289998 -1.3778792,1.970901 -1.4691181,2.091569 -0.1129685,0.576155 -0.1611791,0.802575 -0.6431902,0.96411 -0.3986917,1.3028 -0.6417833,1.787834 -1.0176848,2.216489 0.3538679,-0.325993 0.8783608,-0.819191 1.188171,-1.1985 0.1832245,-0.129882 1.6962122,-1.48914 2.4417183,-2.856965 0.8424723,-1.545736 2.6622813,-5.7450873 2.6611583,-6.3818465 0,0 -1.448701,0.4164865 -2.189358,0.7561649 C 9.2260207,6.7081341 5.7297829,7.6345556 5.7297829,7.6345556 5.312784,5.2777324 7.980606,0.39769734 8.1890736,0.03258782 Z"
+       sodipodi:nodetypes="ccsccssccccscscc" />
+  </g>
+</svg>

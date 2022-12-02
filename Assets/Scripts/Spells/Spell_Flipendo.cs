@@ -34,7 +34,7 @@ public class Spell_Flipendo : SpellBasic
         base.HideMuzzle(ref Muzzle);
         Muzzle = base.GetMuzzle(MuzzleSocket);
 
-        base.DoShoot(ProjectileSocket);
+        base.DoShoot(ProjectileSocket, 10000f);
 
         return true;
     }

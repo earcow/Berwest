@@ -60,4 +60,4 @@ MonoBehaviour:
     _spellEjectionType: 4
   spellShape:
     _projectile: {fileID: 0}
-    _muzzle: {fileID: 7655095426451682942, guid: 358eca6adc32a89459c54b6b62d9c825, type: 3}
+    _muzzle: {fileID: 3172269463517269662, guid: dd497b3042e7b0d488fb4100dbf22e7c, type: 3}

@@ -136,11 +136,10 @@ public abstract class SpellBasic : MonoBehaviour
 
     //Функционал стрельбы
     private GameObject _projectile;
-    protected void DoShoot(Transform projectileSocket)
+    protected void DoShoot(Transform projectileSocket, float projectileSpeed = 1, ForceMode projectileForceMode=ForceMode.Force)
     {
-        var projectileSpeed = 10;
         _projectile = Instantiate(spellShape.Projectile, projectileSocket.position, projectileSocket.rotation);
-        _projectile.GetComponent<Rigidbody>().AddForce(projectileSocket.forward * projectileSpeed, ForceMode.Force);
+        _projectile.GetComponent<Rigidbody>().AddForce(projectileSocket.forward * projectileSpeed, projectileForceMode);
 
         CastRecharge();
     }
